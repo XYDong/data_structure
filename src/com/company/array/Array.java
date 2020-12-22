@@ -71,11 +71,20 @@ public class Array<E> {
     }
 
     // 获取index位置的数据
-    E get(int index) {
+    public E get(int index) {
         if (index < 0 || index >= size) {
             throw new IllegalArgumentException("Get failed. Index is illegal.");
         }
         return data[index];
+    }
+    // 获取最后一个元素
+    public E getLast(){
+        return get(0);
+    }
+
+    // 获取第一个元素
+    public E getFirst(){
+        return get(size -1);
     }
 
     // 修改index的数据
