@@ -1,6 +1,7 @@
 package com.company.stack;
 
 import com.company.linkedlist.LinkedList;
+import com.company.queue.Queue;
 
 /**
  * @version 1.0.0
@@ -51,6 +52,14 @@ public class LinkedListStack<E> implements Stack<E>{
     }
 
     public static void main(String[] args) {
-
+        LinkedListStack<Integer> listStack = new LinkedListStack<>();
+        for (int i = 0; i < 10; i++) {
+            listStack.push(i);
+            System.out.println(listStack);
+            if (i % 3 == 2) {
+                listStack.pop();
+                System.out.println(listStack);
+            }
+        }
     }
 }
