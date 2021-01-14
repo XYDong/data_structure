@@ -22,16 +22,24 @@ public class Solution2 {
         }
         return dummyHead.next;
     }
-    public ListNode removeElements2(ListNode head, int val) {
+//    public ListNode removeElements2(ListNode head, int val) {
+//        if (head == null) {
+//            return null;
+//        }
+//        head.next = removeElements2(head.next,val);
+//        if (head.next.val == val) {
+//            return head.next;
+//        } else {
+//            return head;
+//        }
+//    }
+    public ListNode removeElements3(ListNode head, int val) {
         if (head == null) {
             return null;
         }
-        head.next = removeElements2(head.next,val);
-        if (head.next.val == val) {
-            return head.next;
-        } else {
-            return head;
-        }
+        head.next = removeElements3(head.next, val);
+        return head.val == val ? head.next : head;
+
     }
 
 }
