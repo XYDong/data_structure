@@ -64,6 +64,9 @@ public class BST<E extends Comparable<E>>{
         }
         return node;
     }
+    public boolean contatins(E e){
+        return contatins(root,e);
+     }
     public boolean contatins(Node node,E e){
         if (node == null) {
             return false;
@@ -235,11 +238,24 @@ public class BST<E extends Comparable<E>>{
             node.right =remove(node.right,e);
             return node;
         } else {
-            Node right = node.right;
-            Node left = node.left;
-            Node newNode = removeMax(right);
-            newNode.left = left;
-            return newNode;
+            if (node.left == null) {
+                Node right = node.right;
+                node.right = null;
+                size --;
+                return right;
+            } else if (node.right == null){
+                Node left = node.left;
+                node.left = null;
+                size--;
+                return left;
+            } else {
+                Node minimum = minimum(node.right);
+                minimum.left = node.left;
+                minimum.right = removeMin(node.right);
+                node.left = node.right = null;
+                return minimum;
+            }
+
         }
     }
 
