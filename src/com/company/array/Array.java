@@ -150,6 +150,21 @@ public class Array<E> {
         }
     }
 
+    /**
+     * 交换 i 和 K 位置的值
+     * @param i
+     * @param k
+     */
+    public void swap(int i, int k){
+        if (i < 0 || i >= size || k < 0 || k >= size) {
+            throw new IllegalArgumentException("Index is illegal");
+        }
+        if (i != k) {
+            E datum = data[i];
+            data[i] = data[k];
+            data[k] = datum;
+        }
+    }
 
     @Override
     public String toString() {
