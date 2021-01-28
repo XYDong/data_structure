@@ -22,6 +22,17 @@ public class MaxHeap<E extends Comparable<E>> {
         data = new Array<>();
     }
 
+    public MaxHeap(E[] es){
+        data = new Array<>();
+        for (int i = parent(es.length - 1); i > 0 ; i--) {
+            siftDown(i);
+        }
+    }
+
+    private void heapify(E[] es) {
+
+    }
+
     /**
      * 获取元素个数
      */
