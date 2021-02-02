@@ -28,11 +28,6 @@ public class MaxHeap<E extends Comparable<E>> {
             siftDown(i);
         }
     }
-
-    private void heapify(E[] es) {
-
-    }
-
     /**
      * 获取元素个数
      */
@@ -96,10 +91,9 @@ public class MaxHeap<E extends Comparable<E>> {
 
     /**
      * 获取堆中最大的元素
-     * @param k
-     * @return
+     * @return E
      */
-    public E findMax(int k){
+    public E findMax(){
         if (data.getSize() == 0) {
             throw new IllegalArgumentException("Can not findMax when heap is empty");
         }
@@ -111,7 +105,7 @@ public class MaxHeap<E extends Comparable<E>> {
      * @return
      */
     public E extractMax() {
-        E max = findMax(0);
+        E max = findMax();
         data.swap(0,data.getSize() - 1);
         data.removeLast();
         siftDown(0);
@@ -132,5 +126,16 @@ public class MaxHeap<E extends Comparable<E>> {
         }
     }
 
+    /**
+     *  取出对重的最大元素，并且替换成元素e
+     * @param e
+     * @return
+     */
+    public E replace(E e) {
+        E max = findMax();
+        data.add(0,e);
+        siftDown(0);
+        return max;
+    }
 
 }
