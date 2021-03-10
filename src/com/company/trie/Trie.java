@@ -1,7 +1,5 @@
 package com.company.trie;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.TreeMap;
 
 /**
@@ -9,7 +7,7 @@ import java.util.TreeMap;
  * @ClassName Trie.java
  * @Package com.company.trie
  * @Author Joker
- * @Description 高性能树
+ * @Description 字典树
  * @CreateTime 2021年02月18日 14:09:00
  */
 public class Trie {
