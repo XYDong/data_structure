@@ -272,25 +272,42 @@ public class LinkedNode<T> {
 //        System.out.println("**************************************************************");
 
         //检测链表是否有环
-        LinkedNode<Integer> ring = createRing(10, 5);
-        System.out.println("链表是否有环："+ring.detectionRing());
-
-        // 两个有序链表的合并
-        LinkedNode<Integer> linkedNode1 = new LinkedNode<>();
-        Random random = new Random(100);
-        for (int i = 0; i < 10; i++) {
-            linkedNode1.addLast(random.nextInt());
+//        LinkedNode<Integer> ring = createRing(10, 5);
+//        System.out.println("链表是否有环："+ring.detectionRing());
+        // 判断一串字符串是不是回文串
+        String str = "a";
+        char[] chars = str.toCharArray();
+        LinkedNode<Character> linkedNode = new LinkedNode<>();
+        for (int i = 0; i < chars.length; i++) {
+            linkedNode.addLast(chars[i]);
         }
-        LinkedNode<Integer> linkedNode2 = new LinkedNode<>();
-        for (int i = 0; i < 15; i++) {
-            linkedNode2.addLast(random.nextInt());
-        }
-        // 合并
-        if (linkedNode1.size > linkedNode2.size) {
-            Node<Integer> node = linkedNode1.getNode(0);
-            while (node != null){
+        boolean isPal = isPalindrome(linkedNode);
+        System.out.println("是否是回文串：" + isPal);
+    }
 
+    private static boolean isPalindrome(LinkedNode<Character> linkedNode) {
+        Node<Character> slow = linkedNode.getNode(0);
+        Node<Character> fast = linkedNode.getNode(0);
+        Node<Character> pre = null;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            Node<Character> next = slow.next;
+            slow.next = pre;
+            pre = slow;
+            slow = next;
+
+        }
+        if (fast != null) {
+            slow = slow.next;
+        }
+
+        while (slow != null) {
+            if (!pre.getT().equals(slow.getT())) {
+                return false;
             }
+            slow = slow.next;
+            pre = pre.next;
         }
+        return true;
     }
 }
